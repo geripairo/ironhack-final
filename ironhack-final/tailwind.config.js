@@ -2,18 +2,29 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        "at-light-green": "#44ba9f",
-        "at-green": "#286d5d",
-        "light-grey": "#f1f1f1",
+        "header-purple": "#b79ced",
+        "background-pink": "#efd9ce",
+        "logo-font-color": "#1A423F",
       },
     },
     fontFamily: {
       Poppins: ["Poppins, sans-serif"],
+      Silkscreen: ["Silkscreen"]
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      2: '1.563rem',
+      3: '1.953rem',
+      4: '2.441rem',
+      5: '3.052rem',
+      6: '6rem',
     },
     flex: {
       "1": "1 1 0%",
