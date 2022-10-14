@@ -17,6 +17,7 @@ module.exports = {
       Silkscreen: ["Silkscreen"]
     },
     fontSize: {
+      xs: '0.6rem',
       sm: '0.8rem',
       base: '1rem',
       xl: '1.25rem',
@@ -25,6 +26,7 @@ module.exports = {
       4: '2.441rem',
       5: '3.052rem',
       6: '6rem',
+      7:'8rem'
     },
     flex: {
       "1": "1 1 0%",
