@@ -14,6 +14,9 @@ module.exports = {
         "light-green": "#6D856B",
         "skin-pink": "#F38080",
       },
+      backgroundImage: {
+        'skipping': "url('./src/assets/images/skipping.png')",
+      }
     },
     fontFamily: {
       Poppins: ["Poppins, sans-serif"],

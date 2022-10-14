@@ -51,7 +51,7 @@
         Register
         </button>
 
-        <router-link class="text-sm mt-2 text-center text-logo-font-color font-bold" :to="{name: 'Login'}">
+        <router-link class="text-sm mt-2 text-center text-logo-font-color font-bold self-start mx-auto" :to="{name: 'Login'}">
             Already have an account? <span class="text-skin-pink font-semibold">Login</span>
         </router-link>
         
