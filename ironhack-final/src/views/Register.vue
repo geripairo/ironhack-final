@@ -117,7 +117,6 @@
 import {ref} from 'vue';
 import {supabase} from '../supabase.js';
 import {useRouter} from 'vue-router';
-import router from '../router';
 
 // Declaración de Variables
 
@@ -130,6 +129,7 @@ const confirmPassword = ref(null);
 const errorMsg = ref(null)
 const verifyEmail = ref(null);
 const redirect = ref(null);
+const router = useRouter();
 
 // Función de registro
 
