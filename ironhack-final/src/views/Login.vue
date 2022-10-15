@@ -1,10 +1,11 @@
 <template>
-    <div class="bg-[url('./src/assets/images/skipping.png')] h-screen bg-background-pink bg-no-repeat mt-8">
+    <!-- background img = bg-[url('./src/assets/images/skipping.png')] -->
+    <div class="h-screen bg-background-pink bg-no-repeat mt-8">
     
         <div class="max-w-screen-sm mx-auto px-4 py-10">
     
         <!-- Login de usuario -->
-        <form class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
+        <form @submit.prevent="login" class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
             <h1 class="text-3 text-white mb-8">Login</h1>
     
             <div class="flex flex-col mb-6">
@@ -22,7 +23,7 @@
             <div class="flex flex-col mb-6">
                 <label for="password" class="mb-1 text-md text-white font-medium">Password</label>
                 <input 
-                type="email" 
+                type="password" 
                 required 
                 class="p-2 text-gray-500 focus:outline-none rounded-md" 
                 id="password" 
@@ -31,8 +32,8 @@
             </div>  
             
             <!-- Mensaje de error -->
-            <div v-if="errorMsg" class="mb-5 p-4 rounded-md bg-light-grey">
-                <p class="text-red-500">{{errorMsg}}</p>
+            <div id="error-message" v-if="errorMsg" class="bg-red py-1 px-1 rounded-md text-center">
+                <p class="text-black font-semibold">{{errorMsg}}</p>
             </div>
 
             <button 
@@ -57,11 +58,38 @@
   </template>
   
   <script setup>
-  import {ref} from 'vue'
+  import {ref} from 'vue';
+  import {supabase} from '../supabase.js';
+  import {useRouter} from 'vue-router';
   
+  
+//   DECLARACIÓN DE VARIABLES
+
   const email = ref(null);
   const password = ref(null);
   const errorMsg = ref(null);
+  const router = useRouter();
+
+//   FUNCIÓN DE LOG IN DE USUARIO
+
+  const login = async function () {
+    try{
+        let { user, error } = await supabase.auth.signInWithPassword({
+            email: email.value,
+            password: password.value
+        });
+        if (error) throw error;
+        router.push({name: 'Home'})
+
+    }
+    catch(error){
+        errorMsg.value = `Error: ${error.message}`;
+        setTimeout(() => {
+            errorMsg.value = null;
+        }, 5000)
+        
+    }
+  }
   </script>
   
   <style>

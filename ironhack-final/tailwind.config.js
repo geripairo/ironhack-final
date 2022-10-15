@@ -13,6 +13,8 @@ module.exports = {
         "light-grey": "#f1f1f1",
         "light-green": "#6D856B",
         "skin-pink": "#F38080",
+        "red": "#e5383b",
+        "success": "#80ed99",
       },
       backgroundImage: {
         'skipping': "url('./src/assets/images/skipping.png')",
