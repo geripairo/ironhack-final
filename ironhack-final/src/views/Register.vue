@@ -2,7 +2,7 @@
     <div id="wrapper-background" class="h-full bg-background-pink">    
         <div class="max-w-screen-sm mx-auto px-4 py-10 mt-8">
 
-            <!-- Formulario de registro -->
+            <!-- FORMULARIO DE REGISTRO -->
             <form @submit.prevent="register" class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
                 <h1 class="text-3 text-white mb-8">Register</h1>
 
@@ -76,17 +76,17 @@
                     </div>
                 </div>
 
-                <!-- Mensaje de error -->
+                <!-- MENSAJE DE ERROR -->
                 <div id="error-message" v-if="errorMsg" class="bg-red py-1 px-1 rounded-md text-center">
                     <p class="text-black font-semibold">{{errorMsg}}</p>
                 </div>
 
-                <!-- Mensaje de verificación de email -->
+                <!-- MENSAJE DE VERIFICACIÓN EMAIL -->
                 <div id="success-message" v-if="verifyEmail" class="bg-success py-1 px-1 rounded-md text-center mb-3">
                     <p class="text-logo-font-color font-semibold">{{verifyEmail}}</p>
                 </div>
 
-                <!-- Mensaje de redirección al login -->
+                <!-- MENSAJE DE REDIRECT AL LOGIN -->
                 <div id="redirect-message" v-if="redirect">
                     <p class="text-black text-center text-background-pink font-semibold">{{redirect}}</p>
                 </div>
@@ -100,6 +100,7 @@
                 Register
                 </button>
 
+                <!-- LINK HACIA LOGIN -->
                 <router-link 
                 class="text-sm mt-2 text-center text-logo-font-color 
                 font-bold self-start mx-auto" 
@@ -114,11 +115,21 @@
 </template>
 
 <script setup>
+
+// VUE
 import {ref} from 'vue';
+
+// SUPABASE
 import {supabase} from '../supabase.js';
+
+// ROUTER
 import {useRouter} from 'vue-router';
 
-// Declaración de Variables
+// PINIA
+import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
+
+// DECLARACIÓN DE VARIABLES
 
 const name = ref(null);
 const age = ref(null);
@@ -130,45 +141,37 @@ const errorMsg = ref(null)
 const verifyEmail = ref(null);
 const redirect = ref(null);
 const router = useRouter();
+const userStore = useUserStore()
 
-// Función de registro
+// FUNCIÓN DE REGISTRO (LLAMA AL STORE USER.JS)
 
 const register = async function () {
     if (password.value === confirmPassword.value){
         try{
-            let{user, error} = await supabase.auth.signUp({
-                email: email.value,
-                password: password.value,                
-                options: {
-                    data:{
-                        name: name.value,
-                        age: age.value,
-                        phone: JSON.stringify(phone.value),
-                    }
-                }
-            });
-            if (error) throw error;
-            console.log(user)
+            await userStore.signUp(email.value, password.value, name.value, age.value, phone.value)
+
+            // Mensaje de registro completado
             verifyEmail.value = "Sign up complete! Please, verify your email before login in your mailbox";
             redirect.value = "You will now be redirected to Login page"
             setTimeout(() => {
                 router.push({name: 'Login'});
                 verifyEmail.value = null;
                 redirect.value = null;
-            },10000) 
-            
+            },7000)                     
         }
-        catch(error){
+        // Mensaje de error al registrarse
+        catch(error){            
             errorMsg.value = error.message;
         }
         return;
     }
+    // Mensaje de error de validación de inputs
     errorMsg.value = "The passwords do not match!";
     setTimeout(() => {
         errorMsg.value = null
-    }, 10000)
-    
+    }, 10000)    
 }
+
 </script>
 
 <style>
