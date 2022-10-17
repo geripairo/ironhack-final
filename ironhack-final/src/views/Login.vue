@@ -80,7 +80,6 @@ import { storeToRefs } from 'pinia'
   const userStore = useUserStore()
 
 //   FUNCIÓN DE LOG IN DE USUARIO
-
   const login = async function () {
     try{
         await userStore.logIn(email.value, password.value);

@@ -8,6 +8,7 @@
 <script setup>
 // VUE
 import { onMounted } from 'vue'
+import {ref} from 'vue'
 
 // COMPONENTS
 import Navbar from './components/Navbar.vue'
@@ -28,20 +29,29 @@ const router = useRouter()
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
 
-// onMounted(async () => {
-//   try {
-//     await userStore.fetchUser() // here we call fetch user
-//     if (!user.value) {
-//       // redirect them to logout if the user is not there
-//       router.push({ path: '/auth' });
-//     } else {
-//       // continue to dashboard
-//       router.push({ path: '/' });
-//     }
-//   } catch (e) {
-//     console.log(e)
-//   }
-// })
+onMounted(async () => {
+  try {
+    // LLAMAMOS AL USUARIO
+    await userStore.fetchUser();
+    if (!user.value) {
+      // redirect them to logout if the user is not there
+      router.push({ name: 'Login' });
+    } else {
+      // continue to dashboard
+      router.push({ name: 'Home' });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+// ESTABLECEMOS EL VALOR DE USUARIO
+supabase.auth.onAuthStateChange((_, session) => {
+  console.log(session)
+    userStore.setUser(session);
+})
+
+
 </script>
 
 <style>

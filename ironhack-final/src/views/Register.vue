@@ -157,7 +157,7 @@ const register = async function () {
                 router.push({name: 'Login'});
                 verifyEmail.value = null;
                 redirect.value = null;
-            },4000)                     
+            },3000)                     
         }
         // Mensaje de error al registrarse
         catch(error){            

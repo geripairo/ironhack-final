@@ -4,26 +4,38 @@ import { defineStore } from 'pinia';
 import { supabase } from '../supabase';
 
 export const useUserStore = defineStore('user', {
+
+  // VARIABLES----------->
   state: () => ({
     user: null,
   }),
 
+  // FUNCIONES--------->
   actions: {
-    async fetchUser () {
-      const user = await supabase.auth.user();
-      this.user = user
+
+    // LISTENER DE EVENTO DE LOGIN O LOGOUT
+    setUser(userId) {
+      this.user = userId ? userId.user : null;
     },
 
+    // OBTENER USUARIO
+    async fetchUser () {
+      const user = await supabase.auth.user();
+      // this.user = user
+    },
+
+    // LOGIN 
     async logIn (email, password) {
       const { user, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
       });
       if (error) throw error;
-      if (user) this.user = user;
+      // if (user) this.user = user;
     },
 
-    async signUp (email, password,name,age,phone) {
+    // REGISTRO
+    async signUp (email, password, name, age, phone) {
       const { user, error } = await supabase.auth.signUp({
         email: email,
         password: password,
@@ -36,13 +48,15 @@ export const useUserStore = defineStore('user', {
       }
       });
       if (error) throw error;
-      if (user) this.user = user;
+      // if (user) this.user = user;
     },
 
+    // LOGOUT
     async logOut () {
-      let {error} = await supabase.auth.signOut();
+      await supabase.auth.signOut();      
     },
-    
+
+    // PINIA PERSIST
         persist: {
         enabled: true,
         strategies: [
