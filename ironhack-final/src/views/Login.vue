@@ -4,8 +4,8 @@
     
         <div class="max-w-screen-sm mx-auto px-4 py-10">
     
-        <!-- Login de usuario -->
-        <form @submit.prevent="login" class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
+            <!-- FORMULARIO DE LOGIN -->
+            <form @submit.prevent="login" class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
             <h1 class="text-3 text-white mb-8">Login</h1>
     
             <div class="flex flex-col mb-6">
@@ -17,8 +17,7 @@
                 id="email" 
                 v-model="email" 
                 />
-            </div>
-            
+            </div>            
     
             <div class="flex flex-col mb-6">
                 <label for="password" class="mb-1 text-md text-white font-medium">Password</label>
@@ -31,7 +30,7 @@
                 />
             </div>  
             
-            <!-- Mensaje de error -->
+            <!-- MENSAJE DE ERROR -->
             <div id="error-message" v-if="errorMsg" class="bg-red py-1 px-1 rounded-md text-center">
                 <p class="text-black font-semibold">{{errorMsg}}</p>
             </div>
@@ -45,22 +44,31 @@
             Login
             </button>
     
+            <!-- LINK HACIA REGISTER -->
             <router-link class="text-sm mt-2 text-center text-logo-font-color font-bold self-start mx-auto" :to="{name: 'Register'}">
                 Don't have an account? <span class="text-skin-pink font-semibold">Register</span>
             </router-link>          
             
-        </form>
+            </form>
         
         </div>
-    </div>
-
-    
+    </div>    
   </template>
-  
-  <script setup>
-  import {ref} from 'vue';
-  import {supabase} from '../supabase.js';
-  import {useRouter} from 'vue-router';
+
+<script setup>
+
+// VUE
+import {ref} from 'vue';
+
+// SUPABASE
+import {supabase} from '../supabase.js';
+
+// ROUTER
+import {useRouter} from 'vue-router';
+
+// PINIA
+import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
   
   
 //   DECLARACIÓN DE VARIABLES
@@ -69,17 +77,14 @@
   const password = ref(null);
   const errorMsg = ref(null);
   const router = useRouter();
+  const userStore = useUserStore()
 
 //   FUNCIÓN DE LOG IN DE USUARIO
 
   const login = async function () {
     try{
-        let { user, error } = await supabase.auth.signInWithPassword({
-            email: email.value,
-            password: password.value
-        });
-        if (error) throw error;
-        router.push({name: 'Home'})
+        await userStore.logIn(email.value, password.value);
+        router.push({name: 'Home'});
 
     }
     catch(error){
@@ -90,7 +95,7 @@
         
     }
   }
-  </script>
+</script>
   
   <style>
   
