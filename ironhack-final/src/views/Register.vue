@@ -151,13 +151,13 @@ const register = async function () {
             await userStore.signUp(email.value, password.value, name.value, age.value, phone.value)
 
             // Mensaje de registro completado
-            verifyEmail.value = "Sign up complete! Please, verify your email before login in your mailbox";
-            redirect.value = "You will now be redirected to Login page"
+            verifyEmail.value = "Sign up complete! Please, verify your email!";
+            redirect.value = "Redirecting to login..."
             setTimeout(() => {
                 router.push({name: 'Login'});
                 verifyEmail.value = null;
                 redirect.value = null;
-            },7000)                     
+            },4000)                     
         }
         // Mensaje de error al registrarse
         catch(error){            

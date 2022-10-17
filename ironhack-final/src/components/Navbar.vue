@@ -10,14 +10,30 @@
                 <router-link class="cursor-pointer" :to="{ name: 'Home'}">HOME</router-link>
                 <router-link class="cursor-pointer" :to="{ name: ''}">CREATE</router-link>
                 <router-link class="cursor-pointer" :to="{ name: 'Login'}">LOGIN</router-link>
-                <li class="cursor-pointer">LOGOUT</li>
+                <li @click="logout" class="cursor-pointer">LOGOUT</li>
             </ul>
         </nav>
     </header>
 </template>
 
 <script setup>
+
+// SUPABASE
+import {supabase} from '../supabase.js';
+
+// ROUTER
+import {useRouter} from 'vue-router';
+
+// PINIA
+import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
+
+const userStore = useUserStore();
 const claimer = "<Train> Train your body () => Boost, Your, Code! </Train>"
+
+const logout = async function () {
+    await userStore.logOut();
+}
 </script>
 
 <style>
