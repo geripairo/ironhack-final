@@ -1,7 +1,7 @@
 // /store/user.js
 
 import { defineStore } from 'pinia';
-import { supabase } from '../supabase';
+import { supabase } from '../supabase.js';
 
 export const useUserStore = defineStore('user', {
 
@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', {
     // OBTENER USUARIO
     async fetchUser () {
       const user = await supabase.auth.user();
-      // this.user = user
+      this.user = user
     },
 
     // LOGIN 

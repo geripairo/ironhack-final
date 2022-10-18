@@ -27,25 +27,26 @@ import {supabase} from './supabase.js'
 // VARIABLES
 const router = useRouter()
 const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
+const { user } = storeToRefs()
 
-onMounted(async () => {
-  try {
-    // LLAMAMOS AL USUARIO
-    await userStore.fetchUser();
-    if (!user.value) {
-      // redirect them to logout if the user is not there
-      router.push({ name: 'Login' });
-    } else {
-      // continue to dashboard
-      router.push({ name: 'Home' });
-    }
-  } catch (error) {
-    console.log(error)
-  }
-})
+// onMounted(async () => {
+//   try {
+//     // LLAMAMOS AL USUARIO
+//     await userStore.fetchUser();
+//     if (!user.value) {
+//       // redirect them to logout if the user is not there
+//       router.push({ name: 'Login' });
+//     } else {
+//       // continue to dashboard
+//       router.push({ name: 'Home' });
+//     }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 
-// ESTABLECEMOS EL VALOR DE USUARIO
+
+// ESTABLECEMOS EL VALOR DE USUARIO AL CAMBIAR DE ESTADO
 supabase.auth.onAuthStateChange((_, session) => {
   console.log(session)
     userStore.setUser(session);

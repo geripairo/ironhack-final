@@ -11,7 +11,7 @@
             <!-- LINKS A LAS RUTAS -->
             <ul class="flex flex-1 gap-x-10 font-Poppins font-bold pb-6 text-xl md:pb-10 md:text-2">
                 <router-link class="cursor-pointer" :to="{ name: 'Home'}">HOME</router-link>
-                <router-link v-if="user" class="cursor-pointer" :to="{ name: ''}">CREATE</router-link>
+                <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Create'}">CREATE</router-link>
                 <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login'}">LOGIN</router-link>
                 <li v-if="user" @click="logout" class="cursor-pointer">LOGOUT</li>
             </ul>
