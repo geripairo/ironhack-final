@@ -8,10 +8,23 @@ export const useTaskStore = defineStore('tasks', {
   actions: {
     async fetchTasks () {
       const { data: tasks } = await supabase
-        .from('tasks')
+        .from('workouts')
         .select('*')
         .order('id', { ascending: false });
       this.tasks = tasks;
+    },
+    async insertRow (id, name, type, exercises) {
+      const {error} = await supabase
+      .from('workouts')
+      .insert([
+        {
+          user_id: id,
+          workoutName: name,
+          workoutType: type,
+          exercises: exercises
+        }
+      ])
+      if(error) throw error;
     }
   }
 });

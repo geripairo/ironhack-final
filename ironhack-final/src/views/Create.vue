@@ -1,17 +1,10 @@
 <template>
   <div class="max-w-screen-md mx-auto px-4 py-10">
-    <!-- MENSAJE DE ESTADO -->
-    <div v-if="statusMsg || errorMsg" class="mb-10 p-4 bg-light-grey rounded-md">
-        <p class="text-at-light-green shadow-lg">
-            {{statusMsg}}
-        </p>
-        <p class="text-ref-500">{{errorMsg}}</p>
-    </div>
 
     <!-- CREAR EJERCICIO -->
     <div class="p-8 flex items-start bg-light-grey rounded-md shadow-lg">
         <!-- form -->
-        <form class="flex flex-col gap-y-5 w-full">
+        <form @submit.prevent="createWorkout" class="flex flex-col gap-y-5 w-full">
 
             <h1 class="text-3 text-black">Create Workout</h1>
 
@@ -189,8 +182,11 @@
                 Record Workout
             </button>
                 
-            <!-- Botón de guardar ejercicio en el dashboard -->
-
+            <!-- MENSAJE DE ESTADO -->
+            <div v-if="statusMsg || errorMsg" class="mb-10 p-4 bg-light-grey rounded-md">
+                <p class="text-at-light-green shadow-lg">{{statusMsg}}</p>
+                <p class="text-ref-500">{{errorMsg}}</p>
+            </div>
 
         </form>
     </div>
@@ -211,11 +207,15 @@ import { useRouter } from 'vue-router'
 // PINIA
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/user.js'
+import {useTaskStore} from '../stores/task.js'
 
 // SUPABASE
 import {supabase} from '../supabase.js'
 
 // VARIABLES
+const userStore = useUserStore();
+const taskStore = useTaskStore();
+const user = userStore.user;
 const workoutName = ref("");
 const workoutType = ref("select-workout")
 const statusMsg = ref(null);
@@ -257,11 +257,24 @@ const deleteExercise = function (id) {
     return;   
 }
 
-// CREAR EL EJERCICIO CON SUPABASE
-const createWorkout = function () {
-    try{}
+// CREAR EL EJERCICIO EN SUPABASE
+const createWorkout = async function () {
+    try{
+        await taskStore.insertRow(userStore.user.id, workoutName.value, workoutType.value, exercises.value);
+        statusMsg.value = 'Wrokout Created!'
+        workoutName.value = null;
+        workoutType.value = 'select-workout';
+        exercises.value = [],
+        setTimeout(() => {
+            statusMsg.value = null;
+        }, 5000);
+    }
+    
     catch(error) {
-        err
+        errorMsg.value = `Error: ${error.message}`;
+        setTimeout(() => {
+            errorMsg.value = null;
+        }, 5000);
     }
 }
 </script>
