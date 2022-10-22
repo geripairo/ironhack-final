@@ -260,7 +260,7 @@ const deleteExercise = function (id) {
 // CREAR EL EJERCICIO EN SUPABASE
 const createWorkout = async function () {
     try{
-        await taskStore.insertRow(userStore.user.id, workoutName.value, workoutType.value, exercises.value);
+        await taskStore.insertRow(user.id, workoutName.value, workoutType.value, exercises.value);
         statusMsg.value = 'Wrokout Created!'
         workoutName.value = null;
         workoutType.value = 'select-workout';
@@ -269,7 +269,7 @@ const createWorkout = async function () {
             statusMsg.value = null;
         }, 5000);
     }
-    
+
     catch(error) {
         errorMsg.value = `Error: ${error.message}`;
         setTimeout(() => {

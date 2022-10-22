@@ -83,7 +83,7 @@ import { storeToRefs } from 'pinia'
   const login = async function () {
     try{
         await userStore.logIn(email.value, password.value);
-        router.push({name: 'Home'});
+        router.push({name: 'Dashboard'});
 
     }
     catch(error){

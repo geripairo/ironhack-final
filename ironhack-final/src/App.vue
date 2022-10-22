@@ -38,7 +38,7 @@ const { user } = storeToRefs()
 //       router.push({ name: 'Login' });
 //     } else {
 //       // continue to dashboard
-//       router.push({ name: 'Home' });
+//       router.push({ name: 'Dashboard' });
 //     }
 //   } catch (error) {
 //     console.log(error)
