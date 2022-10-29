@@ -11,7 +11,7 @@
             <!-- LINKS A LAS RUTAS -->
             <ul class="flex flex-1 gap-x-10 font-Poppins font-bold pb-6 text-xl md:pb-10 md:text-2">
                 <router-link  v-if="!user" class="cursor-pointer" :to="{ name: 'Home'}">HOME</router-link>
-                <router-link  v-if="user" class="cursor-pointer" :to="{ name: 'Dashboard'}">DASHBOARD</router-link>
+                <router-link  v-if="user" @click="fetchData" class="cursor-pointer" :to="{ name: 'Dashboard'}">DASHBOARD</router-link>
                 <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Create'}">CREATE</router-link>
                 <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login'}">LOGIN</router-link>
                 <li v-if="user" @click="logout" class="cursor-pointer">LOGOUT</li>
@@ -34,14 +34,16 @@ import {useRouter} from 'vue-router';
 // PINIA
 import { useUserStore } from '../stores/user.js'
 import { storeToRefs } from 'pinia'
+import {useTaskStore} from '../stores/task.js'
 
 const userStore = useUserStore();
 const router = useRouter();
 
+
 // SUBTÍTULO DEL LOGO
 const claimer = "<Train> Train your body () => Boost, Your, Code! </Train>"
 
-
+const taskStore = useTaskStore();
 // OBTENEMOS EL USUARIO DESDE EL STORE
 const user = computed (() => userStore.user);
 
@@ -50,6 +52,10 @@ const logout = async function () {
     await userStore.logOut();
     router.push({name: 'Home'});    
 };
+
+const fetchData = function () {
+    taskStore.fetchTasks(userStore.user.id)
+}
 
 </script>
 

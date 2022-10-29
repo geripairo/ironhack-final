@@ -161,6 +161,8 @@
                     </button> 
                     
                 </div>
+
+                <!-- Añadir ejercicio -->
                 <button
                     @click="addExercise" 
                     type="button" 

@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Create from '../views/Create.vue'
 import Dashboard from '../views/DasHboard.vue'
+import ViewWorkout from '../views/ViewWorkout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/create',
       name: 'Create',
       component: Create
+    },
+    {
+      path: '/workout/:workoutId',
+      name: 'View-Workout',
+      component: ViewWorkout,
     },
   ]
 })
