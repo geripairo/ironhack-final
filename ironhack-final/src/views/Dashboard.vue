@@ -1,44 +1,44 @@
 <template>
     
-        <div class="container mt-10 px-4">
+        <div class="container mt-10 px-4 my-24 h-screen bg-almost-white">
     
-        <div v-if="data.length === 0" class="w-full flex flex-col items-center">
-            <h1 class="text-2xl text-black">This is empty...</h1>
-            <router-link
-            class="mt-6 py-2 px-6 rounded-md text-sm text-white bg-black" 
-            :to="{name: 'Create'}"> Create new Workout</router-link>
-        </div>
-    
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <router-link 
-            class="flex-flex-col items-center bg-white p-8 shadow-md cursor-pointer"
-            :to="{name: 'View-Workout', params: {workoutId: workout.id}}"
-            v-for="(workout, index) in data"
-            :key="index"
-            >
-              <img 
-                v-if="workout.workoutType === 'cardio'" 
-                src="../assets/images/logo-img.png" 
-                alt="test-img1"
-                class="h-24 w-auto"
-              />
-
-              <img 
-                v-else 
-                src="../assets/images/logo-full.png"
-                alt="test-img2"
-                class="h-24 w-auto"
-              />
-
-              <p class="mt-6 py-1 px-3 text-xs text-black bg-white shadow-md rounded-md">
-              {{workout.workoutType}}
-              </p>
+          <div v-if="data.length === 0" class="w-full flex flex-col items-center pt-24">
+              <h1 class="text-2xl text-black">This is empty...</h1>
+              <router-link
+              class="mt-6 py-2 px-6 rounded-md text-sm text-white bg-black" 
+              :to="{name: 'Create'}"> Create new Workout</router-link>
+          </div>
       
-              <h1 class="mt-8 mb-2 text-center text-xl text-black">
-              {{workout.workoutName}}
-              </h1>
-            </router-link>
-        </div>
+          <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-almost-white">
+              <router-link 
+              class="flex-flex-col items-center bg-green-low p-8 shadow-md cursor-pointer rounded-xl"
+              :to="{name: 'View-Workout', params: {workoutId: workout.id}}"
+              v-for="(workout, index) in data"
+              :key="index"
+              >
+                <img 
+                  v-if="workout.workoutType === 'cardio'" 
+                  src="../assets/images/cardio.png" 
+                  alt="test-img1"
+                  class="h-24 w-auto mx-auto"
+                />
+
+                <img 
+                  v-else 
+                  src="../assets/images/strenght.png"
+                  alt="test-img2"
+                  class="h-24 w-auto mx-auto"
+                />
+
+                <p class="text-center mt-6 py-1 w-full text-base font-semibold font-Roboto text-almost-white">
+                {{workout.workoutType}}
+                </p>
+        
+                <h1 class="mt-8 mb-2 text-center text-xl text-almost-white font-Silkscreen">
+                {{workout.workoutName}}
+                </h1>
+              </router-link>
+          </div>
         </div>
   </template>
   

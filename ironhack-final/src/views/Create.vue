@@ -1,198 +1,202 @@
 <template>
-  <div class="max-w-screen-md mx-auto px-4 py-10">
 
-    <!-- CREAR EJERCICIO -->
-    <div class="p-8 flex items-start bg-light-grey rounded-md shadow-lg">
-        <!-- form -->
-        <form @submit.prevent="createWorkout" class="flex flex-col gap-y-5 w-full">
+    <div class="h-full">
 
-            <h1 class="text-3 text-black">Create Workout</h1>
+        <div class="max-w-screen-md mx-auto px-4 py-24 pb-96 h-full">
 
-            <!-- Nombre del ejercicio -->
-            <div class="flex flex-col">
-                <label for="workout-name" class="mb-1 text-sm text-black">Workout Name</label>
-                <input 
-                type="text" 
-                id="workout-name" 
-                v-model="workoutName" 
-                required 
-                class="p-2 text-gray-500 focus:outline-none"
-                >
-            </div>
+            <!-- CREAR EJERCICIO -->
+            <div class="p-8 flex items-start lg:bg-green-low lg:rounded-md lg:shadow-lg">
+                <!-- form -->
+                <form @submit.prevent="createWorkout" class="flex flex-col gap-y-5 w-full">
 
-            <!-- Tipo de ejercicio -->
-            <div class="flex flex-col">
-                <label for="workout-type" class="mb-1 text-sm text-black">Workout Type</label>
-                <select 
-                id="workout-type" 
-                v-model="workoutType" 
-                class="p-2 text-gray-500 focus:outline-none" 
-                required
-                @change="workoutChange"
-                >
-                <option value="select-workout">Select Workout</option>
-                <option value="strength">Strength Training</option>
-                <option value="cardio">Cardio Training</option>
-                </select>
+                    <h1 class="text-3 font-Silkscreen text-green-strong lg:text-almost-white">Create Workout</h1>
 
-            </div>
-
-            <!-- Inputs de entrenamiento fuerza -->
-            <div v-if="workoutType === 'strength'" class="flex flex-col gap-y-4">
-                <div 
-                class="flex flex-col gap-x-6 relative md:flex-row" 
-                v-for="(item, index) in exercises" 
-                :key="index"
-                >
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="exercise-name" class="mb-1 text-sm text-black">Exercise</label>
+                    <!-- Nombre del ejercicio -->
+                    <div class="flex flex-col">
+                        <label for="workout-name" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Workout Name</label>
                         <input 
                         type="text" 
+                        id="workout-name" 
+                        v-model="workoutName" 
                         required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.exercise"
-                        />
-                    </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="sets" class="mb-1 text-sm text-black">Sets</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.sets"
-                        />
-                    </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="reps" class="mb-1 text-sm text-black">Reps</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.reps"
-                        />
-                    </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="weight" class="mb-1 text-sm text-black">Weight (kgs)</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.weight"
-                        />
-                    </div>
-                    <button 
-                        type="button" 
-                        class="mt-2 py-2 px-2 rounded-md self-start text-md
-                        text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                        hover:text-logo-font-color"
-                        v-if="exercises.length > 1"
-                        @click="deleteExercise(item.id)"
+                        class="p-2 text-green-low-500 border-2 border-green-strong rounded-md lg:border-none"
                         >
-                        Delete
-                    </button>                    
-                </div>
-                <button 
-                    @click="addExercise"
-                    type="button" 
-                    class="mt-6 py-3 px-8 rounded-md self-start text-md
-                    text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                    hover:text-logo-font-color"
-                    >
-                    Add Exercise
-                </button>
-                
-            </div>
+                    </div>
 
-            <!-- Inputs de entrenamiento de cardio -->
-            <div v-if="workoutType === 'cardio'" class="flex flex-col gap-y-4">
-                <div 
-                class="flex flex-col gap-x-6 relative md:flex-row" 
-                v-for="(item, index) in exercises" 
-                :key="index"
-                >
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="cardio-type" class="mb-1 text-sm text-at-light-green">Type</label>
+                    <!-- Tipo de ejercicio -->
+                    <div class="flex flex-col">
+                        <label for="workout-type" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Workout Type</label>
                         <select 
-                        id="cardio-type" 
-                        v-model="item.cardioType" 
-                        class="p-2 w-full text-black focus:outline-none"
+                        id="workout-type" 
+                        v-model="workoutType" 
+                        class="p-2 text-gray-500 border-2 border-green-strong rounded-md lg:border-none" 
+                        required
+                        @change="workoutChange"
                         >
-                        <option value="#">Select Type</option>
-                        <option value="run">Run</option>
-                        <option value="walk">Walk</option>
+                        <option value="select-workout">Select Workout</option>
+                        <option value="strength">Strength Training</option>
+                        <option value="cardio">Cardio Training</option>
                         </select>
+
                     </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="distance" class="mb-1 text-sm text-at-light-green">Distance</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.distance"
-                        />
-                    </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="duration" class="mb-1 text-sm text-at-light-green">Duration</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.duration"
-                        />
-                    </div>
-                    <div class="flex flex-col md:w-1/3">
-                        <label for="pace" class="mb-1 text-sm text-at-light-green">Pace</label>
-                        <input 
-                        type="text" 
-                        required 
-                        class="p-2 w-full text-black focus:outline-none"
-                        v-model="item.pace"
-                        />
-                    </div>
-                    <button 
-                        type="button" 
-                        class="mt-6 py-3 px-8 rounded-md self-start text-md
-                        text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                        hover:text-logo-font-color"
-                        v-if="exercises.length > 1"
-                        @click="deleteExercise(item.id)"
+
+                    <!-- Inputs de entrenamiento fuerza -->
+                    <div v-if="workoutType === 'strength'" class="flex flex-col gap-y-4">
+                        <div 
+                        class="flex flex-col gap-x-6 relative md:flex-row" 
+                        v-for="(item, index) in exercises" 
+                        :key="index"
                         >
-                        Delete
-                    </button> 
-                    
-                </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="exercise-name" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Exercise</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.exercise"
+                                />
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="sets" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Sets</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.sets"
+                                />
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="reps" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Reps</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.reps"
+                                />
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="weight" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Weight (kgs)</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.weight"
+                                />
+                            </div>
+                            <button 
+                                type="button" 
+                                class="mt-2 py-2 px-2 rounded-md self-start text-md
+                                text-white bg-logo-font-color duration-200 hover:bg-background-pink 
+                                hover:text-logo-font-color font-Silkscreen"
+                                v-if="exercises.length > 1"
+                                @click="deleteExercise(item.id)"
+                                >
+                                Delete
+                            </button>                    
+                        </div>
+                        <button 
+                            @click="addExercise"
+                            type="button" 
+                            class="mt-6 py-3 px-8 rounded-md self-start text-md
+                            text-white bg-logo-font-color duration-200 hover:bg-background-pink 
+                            hover:text-logo-font-color font-Silkscreen"
+                            >
+                            Add Exercise
+                        </button>
+                        
+                    </div>
 
-                <!-- Añadir ejercicio -->
-                <button
-                    @click="addExercise" 
-                    type="button" 
-                    class="mt-6 py-3 px-8 rounded-md self-start text-md
-                    text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                    hover:text-logo-font-color"
-                    >
-                    Add Exercise
-                </button>
-                
+                    <!-- Inputs de entrenamiento de cardio -->
+                    <div v-if="workoutType === 'cardio'" class="flex flex-col gap-y-4">
+                        <div 
+                        class="flex flex-col gap-x-6 relative md:flex-row" 
+                        v-for="(item, index) in exercises" 
+                        :key="index"
+                        >
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="cardio-type" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Type</label>
+                                <select 
+                                id="cardio-type" 
+                                v-model="item.cardioType" 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                >
+                                <option value="#">Select Type</option>
+                                <option value="run">Run</option>
+                                <option value="walk">Walk</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="distance" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Distance</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.distance"
+                                />
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="duration" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Duration</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.duration"
+                                />
+                            </div>
+                            <div class="flex flex-col md:w-1/3">
+                                <label for="pace" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Pace</label>
+                                <input 
+                                type="text" 
+                                required 
+                                class="p-2 w-full text-black focus:outline-none rounded-md border-2 border-green-strong lg:border-none"
+                                v-model="item.pace"
+                                />
+                            </div>
+                            <button 
+                                type="button" 
+                                class="mt-6 py-3 px-8 rounded-md self-start text-md
+                                text-white bg-logo-font-color duration-200 hover:bg-background-pink 
+                                hover:text-logo-font-color font-Silkscreen shadow-md"
+                                v-if="exercises.length > 1"
+                                @click="deleteExercise(item.id)"
+                                >
+                                Delete
+                            </button> 
+                            
+                        </div>
+
+                        <!-- Añadir ejercicio -->
+                        <button
+                            @click="addExercise" 
+                            type="button" 
+                            class="mt-6 py-3 px-8 rounded-md self-start text-md
+                            text-almost-white bg-logo-font-color duration-200 hover:bg-pink 
+                            hover:text-green-strong font-Silkscreen"
+                            >
+                            Add Exercise
+                        </button>
+                        
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="mt-6 py-3 px-8 rounded-md text-md
+                        text-white bg-logo-font-color duration-200 hover:bg-pink 
+                        hover:text-green-strong font-Silkscreen"
+                        >
+                        Record Workout
+                    </button>
+                        
+                    <!-- MENSAJE DE ESTADO -->
+                    <div v-if="statusMsg || errorMsg" class="text-center mb-10 p-4 lg:bg-almost-white lg:rounded-md lg:shadow-lg font-Roboto font-semibold">
+                        <p class="text-green-strong">{{statusMsg}}</p>
+                        <p class="text-red-500">{{errorMsg}}</p>
+                    </div>
+
+                </form>
             </div>
-
-            <button 
-                type="submit" 
-                class="mt-6 py-3 px-8 rounded-md self-start text-md
-                text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                hover:text-logo-font-color"
-                >
-                Record Workout
-            </button>
-                
-            <!-- MENSAJE DE ESTADO -->
-            <div v-if="statusMsg || errorMsg" class="mb-10 p-4 bg-light-grey rounded-md">
-                <p class="text-at-light-green shadow-lg">{{statusMsg}}</p>
-                <p class="text-ref-500">{{errorMsg}}</p>
-            </div>
-
-        </form>
+        </div>
     </div>
-  </div>
 </template>
 
 <script setup>

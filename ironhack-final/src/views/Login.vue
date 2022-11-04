@@ -7,7 +7,7 @@
                 <!-- IMG -->
             <div id="img-wrapper" class="object-contain bg-almost-white mx-auto relative">
                 <!-- FORMULARIO DE LOGIN -->
-                <div id="form-wrapper" class="max-w-screen-sm px-4 mt-8 
+                <div id="form" class="max-w-screen-sm px-4 mt-8 
                     lg:absolute mx-auto w-full">
                     <form 
                         @submit.prevent="login" 
@@ -46,14 +46,14 @@
                         <button 
                         type="submit" 
                         class="font-Silkscreen bg-green-low text-almost-white rounded-lg py-4 
-                        px-8 mt-7 font-semibold shadow-lg lg:bg-green-strong"
+                        px-8 mt-7 font-semibold shadow-md lg:bg-green-strong duration-200 hover:bg-pink hover:text-green-strong"
                         >
                         Login
                         </button>
                 
                         <!-- LINK HACIA REGISTER -->
                         <router-link class="text-sm mt-8 text-center text-green-low font-bold self-start mx-auto lg:text-green-strong" :to="{name: 'Register'}">
-                            Don't have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white">Register</span>
+                            Don't have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white duration-200 hover:text-pink">Register</span>
                         </router-link>          
                         
                     </form>
@@ -115,7 +115,7 @@ import { storeToRefs } from 'pinia'
     width: 60%;
  }
 
- #form-wrapper{
+ #form{
     top:15%;
     left: 50%;
     width: 40%;

@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-screen-sm mx-auto px-3 py-10">
-    <div class="bg-white">
+    <div class="">
       <!-- Info general del workout -->
-      <div class="flex flex-col items-center p-8 rounded-md shadow-md bg-white relative">
+      <div class="flex flex-col items-center p-8 rounded-md bg-green-low relative">
         <div v-if="userStore.user" class="flex absolute left-2 top-2 gap-x-2">
           <div 
           class="h-7 w-7 rounded-full flex justify-center items-center cursor-pointer bg-logo-font-color shadow-lg"
@@ -19,85 +19,85 @@
         </div>
         <img 
         v-if="viewData.workoutType === 'cardio'" 
-        class="h-40 w-auto" src="../assets/images/logo-full.png" 
+        class="h-40 w-auto" src="../assets/images/cardio.png" 
         alt="workout-img"
         >
         <img 
         v-else 
-        class="h-40 w-auto" src="../assets/images/skipping.png" 
+        class="h-40 w-auto" src="../assets/images/strenght.png" 
         alt="workout-img"
         >
 
-        <span class="mt-6 py-1.5 px-5 text-xs text-white 
-        bg-light-green rounded-lg shadow-md"
+        <!-- <span class="mt-6 py-4 px-12 text-xs text-almost-white font-Roboto font-semibold 
+        bg-green-strong rounded-md shadow-md"
         >
         {{viewData.workoutType}}
-        </span>
+        </span> -->
 
         <div class="w-full mt-6">
           <input 
           v-if="edit" 
           v-model="viewData.workoutName"
           type="text" 
-          class="p-2 w-full text-black focus:outline-none"
+          class="p-2 w-full text-green-strong rounded-md bg-almost-white"
           >
 
-          <h1 v-else class="text-black text-2xl text-center">
+          <h1 v-else class="text-2 text-center font-Silkscreen text-almost-white">
             {{viewData.workoutName}}
           </h1>
         </div>      
       </div>
       
       <!-- Ejercicios -->
-      <div class="mt-10 p-8 rounded-md flex flex-col items-center bg-white shadow-md">
+      <div class="mt-10 p-8 rounded-md flex flex-col items-center bg-green-strong shadow-md">
         <!-- Fuerza -->
         <div v-if="viewData.workoutType === 'strength'" class="flex flex-col gap-y-4 w-full">
           <div 
             v-for="(item, index) in viewData.exercises"
             :key="index"
-            class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row"
+            class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row text-almost-white"
           >
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="exercise-name" class="mb-1 text-sm text-black">Exercise</label>
+              <label for="exercise-name" class="mb-1 text-sm text-almost-white font-Silkscreen">Exercise</label>
               <input 
               id="exercise-name"
               v-if="edit" 
               type="text" 
               v-model="item.exercise"
-              class="p-2 w-full text-black focus:outline-none"
+              class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.exercise}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="sets" class="mb-1 text-sm text-black">Sets</label>
+              <label for="sets" class="mb-1 text-sm text-almost-white font-Silkscreen">Sets</label>
               <input 
               id="sets"
               v-if="edit" 
               type="text" 
               v-model="item.sets"
-              class="p-2 w-full text-black focus:outline-none"
+              class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.sets}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="reps" class="mb-1 text-sm text-black">Reps</label>
+              <label for="reps" class="mb-1 text-sm text-almost-white font-Silkscreen">Reps</label>
               <input 
               id="reps"
               v-if="edit" 
               type="text" 
               v-model="item.reps"
-              class="p-2 w-full text-black focus:outline-none"
+              class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.reps}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="weight" class="mb-1 text-sm text-black">Weight(Kg's)</label>
+              <label for="weight" class="mb-1 text-sm text-almost-white font-Silkscreen">Weight(Kg's)</label>
               <input 
               id="weight"
               v-if="edit" 
               type="text" 
               v-model="item.weight"
-              class="p-2 w-full text-black focus:outline-none"
+              class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.weight}}</p>
             </div>
@@ -114,8 +114,8 @@
             @click="addExercise" 
             type="button" 
             class="mt-6 py-3 px-8 rounded-md self-start text-md
-            text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-            hover:text-logo-font-color"
+            text-white bg-green-low duration-200 hover:bg-pink 
+            hover:text-green-strong font-Silkscreen font-semibold"
           >
           Add Exercise
           </button>
@@ -126,15 +126,15 @@
           <div 
             v-for="(item, index) in viewData.exercises"
             :key="index"
-            class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row"
+            class="flex flex-col gap-x-6 gap-y-2 relative sm:flex-row text-almost-white"
           >
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="cardioType" class="mb-1 text-sm text-black">Type</label>
+              <label for="cardioType" class="mb-1 text-sm text-almost-white font-Silkscreen">Type</label>
               <select 
                 id="cardioType"
                 v-if="edit"                 
                 v-model="item.cardioType"
-                class="p-2 w-full text-black focus:outline-none"
+                class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
                 <option value="#">Select Type</option>
                 <option value="run">Run</option>
@@ -143,35 +143,35 @@
               <p v-else>{{item.cardioType}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="distance" class="mb-1 text-sm text-black">Distance</label>
+              <label for="distance" class="mb-1 text-sm text-almost-white font-Silkscreen">Distance</label>
               <input 
                 id="distance"
                 v-if="edit" 
                 type="text" 
                 v-model="item.distance"
-                class="p-2 w-full text-black focus:outline-none"
+                class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.distance}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="duration" class="mb-1 text-sm text-black">Duration</label>
+              <label for="duration" class="mb-1 text-sm text-almost-white font-Silkscreen">Duration</label>
               <input 
                 id="duration"
                 v-if="edit" 
                 type="text" 
                 v-model="item.duration"
-                class="p-2 w-full text-black focus:outline-none"
+                class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
               >
               <p v-else>{{item.duration}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="pace" class="mb-1 text-sm text-black">Pace</label>
+              <label for="pace" class="mb-1 text-sm text-almost-white font-Silkscreen">Pace</label>
               <input 
               id="pace"
               v-if="edit" 
               type="text" 
               v-model="item.pace"
-              class="p-2 w-full text-black focus:outline-none"
+              class="p-2 w-full text-green-strong bg-almost-white rounded-md focus:outline-none"
             >
               <p v-else>{{item.pace}}</p>
             </div>
@@ -188,8 +188,8 @@
             @click="addExercise" 
             type="button" 
             class="mt-6 py-3 px-8 rounded-md self-start text-md
-            text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-            hover:text-logo-font-color"
+            text-almost-white bg-green-low duration-200 hover:bg-pink 
+            hover:text-green-strong font-Silkscreen font-semibold"
           >
             Add Exercise
           </button>
@@ -200,9 +200,9 @@
             v-if="edit"
             @click="update" 
             type="button" 
-            class="mt-6 py-3 px-8 rounded-md self-start text-md
-            text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-            hover:text-logo-font-color"
+            class="mt-6 py-3 px-8 rounded-md text-md
+            text-white bg-green-low duration-200 hover:bg-pink 
+            hover:text-logo-font-color w-full font-Silkscreen font-semibold"
         >
           Update Workout
         </button>

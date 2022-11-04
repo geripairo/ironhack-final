@@ -1,17 +1,15 @@
 <template>
-    <div id="wrapper-background" class="h-screen w-full bg-almost-white pt-12 md:pt-24 
-    lg:flex lg:items-center">
+    <div class="h-screen w-full bg-almost-white">
 
-        <!-- IMG -->
-        <div id="img-wrapper" class="lg:w-1/2">
-            <img src="../assets/images/register/pino-puente.png" alt="woman-bridge"
-            class="hidden w-full lg:block md:ml-3 md:ml-6 lg: xl:ml-34 2xl:ml-48"
-        >
-        </div>    
-        <div id="fomr-wrapper" class="max-w-screen-sm mx-auto px-4 mt-8 lg:mr-48 lg:w-full">
+        <div class="pt-12 md:pt-24 
+        bg-almost-white">
 
-            <!-- FORMULARIO DE REGISTRO -->
-            <form @submit.prevent="register" class="p-8 flex flex-col  
+                <!-- IMG -->
+            <div id="img-wrapper" class="object-contain bg-almost-white mx-auto relative">
+                <!-- FORMULARIO DE LOGIN -->
+                <div id="form-wrapper" class="max-w-screen-sm px-4 mt-8 
+                    lg:absolute mx-auto w-full">
+                    <form @submit.prevent="register" class="p-8 flex flex-col  
              lg:bg-green-low lg:rounded-md lg:shadow-lg">
                 <h1 class="text-4 text-green-strong mb-8 lg:text-almost-white font-Silkscreen">Register</h1>
 
@@ -104,8 +102,9 @@
                 <button 
                 type="submit" 
                 class="mt-6 py-3 px-8 rounded-md text-md
-                text-almost-white bg-green-low duration-200 hover:bg-background-pink 
-                hover:text-logo-font-color lg:bg-green-strong font-semibold font-Silkscreen"
+                text-almost-white bg-green-low duration-200 hover:bg-pink 
+                hover:text-logo-font-color lg:bg-green-strong font-semibold font-Silkscreen
+                shadow-md"
                 >
                 Register
                 </button>
@@ -116,13 +115,21 @@
                 font-bold self-start mx-auto lg:text-green-strong" 
                 :to="{name: 'Login'}"
                 >
-                Already have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white">Login</span>
+                Already have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white duration-200 hover:text-pink">Login</span>
                 </router-link>
                 
-            </form>
+                    </form>
+                </div>
+                <img
+                id="login-img" 
+                src="../assets/images/register/pino-puente.png" 
+                alt="man-running-with-laptop"
+                class="hidden lg:block lg:ml-12"
+                >
+            </div>
         </div>
-    </div>
-</template>
+    </div>    
+  </template>
 
 <script setup>
 
@@ -186,5 +193,20 @@ const register = async function () {
 
 <style>
 
+#login-img{
+    width: 70%;
+ }
 
+ #form-wrapper{
+    top:2%;
+    left: 50%;
+    width: 50%;
+ }
+
+ @media(max-width: 1023px){
+    #form{
+        width: 100%;
+    }
+ }
 </style>
+

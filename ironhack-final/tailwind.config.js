@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         "header-purple": "#b79ced",
-        "background-pink": "#957FEF",
+        "pink": "#f38080",
         "logo-font-color": "#1A423F",
         "light-grey": "#f1f1f1",
         "light-green": "#6D856B",        

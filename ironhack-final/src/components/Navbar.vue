@@ -4,22 +4,26 @@
 
             <!-- IMÁGEN LOGO -->
             <div class="mr-6">
-                <router-link class="cursor-pointer" :to="{ name: 'Home'}"><img id="logo" src="../assets/images/logo-black.png" alt="woman-yoga-logo"></router-link>
+                <router-link class="cursor-pointer flex items-start" :to="{ name: 'Home'}"><img id="logo" src="../assets/images/logo.png" alt="woman-yoga-logo" class="hidden sm:inline"><span class="font-Silkscreen text-green-strong font-bold text-1 sm:text-2">flexdev</span></router-link>
+                
             </div>
             
             <!-- LINKS A LAS RUTAS -->
             <ul v-if="!user" class="flex gap-x-3 font-Roboto font-bold text-almost-white 
                  text-xl"
             >
-                <button class="text-black rounded-md border-2 border-green-strong px-3 shadow-md"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Login'}">Login</router-link></button>
-                <button class="bg-green-low text-almost-white rounded-md px-3 shadow-md"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Register'}">Sign Up</router-link></button>
+                <button class="text-black rounded-md border-2 border-green-strong 
+                px-3 shadow-md duration-200 hover:bg-pink hover:text-green-strong"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Login'}">Login</router-link></button>
+                <button class="bg-green-low text-almost-white rounded-md 
+                px-3 shadow-md duration-200 hover:bg-pink hover:text-green-strong"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Register'}">Sign Up</router-link></button>
             </ul>
             <ul v-else class="flex gap-x-3 lg:gap-x-8 font-Roboto font-bold text-green-strong 
                  text-lg md:text-xl"
             >
-                <router-link  @click="fetchData" class="cursor-pointer border-b-4 border-green-strong" :to="{ name: 'Dashboard'}">Dashboard</router-link>
-                <router-link class="cursor-pointer border-b-4 border-green-strong" :to="{ name: 'Create'}">Create</router-link>
-                <button @click="logout" class="text-green-strong rounded-md border-2 border-green-strong px-3 shadow-md">Logout</button>
+                <router-link  @click="fetchData" class="cursor-pointer border-b-4 border-green-strong duration-200 hover:text-pink hover:border-pink" :to="{ name: 'Dashboard'}">Dashboard</router-link>
+                <router-link class="cursor-pointer border-b-4 border-green-strong duration-200 hover:text-pink hover:border-pink" :to="{ name: 'Create'}">Create</router-link>
+                <button @click="logout" class="text-green-strong rounded-md border-2 
+                border-green-strong px-3 shadow-md hover:bg-pink hover:text-green-strong">Logout</button>
 
             </ul>
         </nav>
@@ -68,7 +72,7 @@ const fetchData = function () {
 
 <style>
 #logo{
-    width: 150px;
+    width: 50px;
 }
 #logo-mobile{
     width: 60px;

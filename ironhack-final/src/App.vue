@@ -1,7 +1,7 @@
 <template>
   <div class="font-Roboto box-border h-full bg-almost-white">
-    <Navbar class="fixed top-0 w-screen"/>   
-    <RouterView />
+    <Navbar class="w-screen"/>   
+    <RouterView class="h-screen"/>
   </div>
 </template>
 
