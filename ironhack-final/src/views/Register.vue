@@ -1,29 +1,39 @@
 <template>
-    <div id="wrapper-background" class="h-full bg-background-pink">    
-        <div class="max-w-screen-sm mx-auto px-4 py-10 mt-8">
+    <div id="wrapper-background" class="h-screen w-full bg-almost-white pt-12 md:pt-24 
+    lg:flex lg:items-center">
+
+        <!-- IMG -->
+        <div id="img-wrapper" class="lg:w-1/2">
+            <img src="../assets/images/register/pino-puente.png" alt="woman-bridge"
+            class="hidden w-full lg:block md:ml-3 md:ml-6 lg: xl:ml-34 2xl:ml-48"
+        >
+        </div>    
+        <div id="fomr-wrapper" class="max-w-screen-sm mx-auto px-4 mt-8 lg:mr-48 lg:w-full">
 
             <!-- FORMULARIO DE REGISTRO -->
-            <form @submit.prevent="register" class="p-8 flex flex-col bg-light-green rounded-md shadow-lg">
-                <h1 class="text-3 text-white mb-8">Register</h1>
+            <form @submit.prevent="register" class="p-8 flex flex-col  
+             lg:bg-green-low lg:rounded-md lg:shadow-lg">
+                <h1 class="text-4 text-green-strong mb-8 lg:text-almost-white font-Silkscreen">Register</h1>
 
                 <div id="user wrapper" class="flex flex-col md:flex-row md:gap-5">
                     <div class=" container flex flex-col mb-6">
-                        <label for="name" class="mb-1 text-md text-white font-medium">Name</label>
+                        <label for="name" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Name</label>
                         <input 
                         type="text" 
                         required 
-                        class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                        class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white 
+                        lg:bg-almost-white opacity-70 lg:opacity-100 lg:text-green-strong" 
                         id="name" 
                         v-model="name" 
                         />
                     </div>
 
                     <div class="container flex flex-col mb-4">
-                        <label for="age" class="mb-1 text-md text-white font-medium">Age</label>
+                        <label for="age" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Age</label>
                         <input 
                         type="number" 
                         required 
-                        class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                        class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white lg:text-green-strong lg:bg-almost-white opacity-70 lg:opacity-100" 
                         id="age" 
                         v-model="age" 
                         />
@@ -31,22 +41,22 @@
                 </div>
 
                 <div id="email" class="flex flex-col mb-6">
-                    <label for="email" class="mb-1 text-md text-white font-medium">Email</label>
+                    <label for="email" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Email</label>
                     <input 
                     type="email" 
                     required 
-                    class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                    class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white lg:text-green-strong lg:bg-almost-white opacity-70 lg:opacity-100" 
                     id="email" 
                     v-model="email" 
                     />
                 </div>
 
                 <div id="phone" class="flex flex-col mb-6">
-                    <label for="phone" class="mb-1 text-md text-white font-medium">Phone</label>
+                    <label for="phone" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Phone</label>
                     <input 
                     type="number" 
                     required 
-                    class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                    class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white lg:text-green-strong lg:bg-almost-white opacity-70 lg:opacity-100" 
                     id="phone" 
                     v-model="phone" 
                     />
@@ -54,22 +64,22 @@
 
                 <div id="password wrapper" class="flex flex-col md:flex-row md:gap-5">
                     <div class=" container flex flex-col mb-6">
-                        <label for="password" class="mb-1 text-md text-white font-medium">Password</label>
+                        <label for="password" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Password</label>
                         <input 
                         type="password" 
                         required 
-                        class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                        class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white lg:text-green-strong lg:bg-almost-white opacity-70 lg:opacity-100" 
                         id="password" 
                         v-model="password" 
                         />
                     </div>
 
                     <div class="container flex flex-col mb-4">
-                        <label for="confirmPassword" class="mb-1 text-md text-white font-medium">Confirm Password</label>
+                        <label for="confirmPassword" class="font-Silkscreen mb-1 text-md text-green-strong font-medium lg:text-almost-white">Confirm Password</label>
                         <input 
                         type="password" 
                         required 
-                        class="p-2 text-gray-500 focus:outline-none rounded-md" 
+                        class="p-2 focus:outline-none rounded-md bg-green-low text-almost-white lg:text-green-strong lg:bg-almost-white opacity-70 lg:opacity-100" 
                         id="confirmPassword" 
                         v-model="confirmPassword" 
                         />
@@ -93,20 +103,20 @@
 
                 <button 
                 type="submit" 
-                class="mt-6 py-3 px-8 rounded-md self-start text-md
-                text-white bg-logo-font-color duration-200 hover:bg-background-pink 
-                hover:text-logo-font-color"
+                class="mt-6 py-3 px-8 rounded-md text-md
+                text-almost-white bg-green-low duration-200 hover:bg-background-pink 
+                hover:text-logo-font-color lg:bg-green-strong font-semibold font-Silkscreen"
                 >
                 Register
                 </button>
 
                 <!-- LINK HACIA LOGIN -->
                 <router-link 
-                class="text-sm mt-2 text-center text-logo-font-color 
-                font-bold self-start mx-auto" 
+                class="text-sm mt-2 text-center text-green-low 
+                font-bold self-start mx-auto lg:text-green-strong" 
                 :to="{name: 'Login'}"
                 >
-                Already have an account? <span class="text-skin-pink font-semibold">Login</span>
+                Already have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white">Login</span>
                 </router-link>
                 
             </form>
@@ -175,5 +185,6 @@ const register = async function () {
 </script>
 
 <style>
+
 
 </style>

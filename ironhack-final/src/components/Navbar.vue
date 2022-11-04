@@ -1,20 +1,26 @@
 <template>
-    <header class="bg-header-purple text-logo-font-color">
-        <nav class="container pt-5 px-4 gap-5 flex flex-col items-center">
+    <header id="header" class="">
+        <nav class="px-4 pt-3 flex flex-row justify-between items-center bg-almost-white lg:px-8">
 
             <!-- IMÁGEN LOGO -->
-            <div class="flex items-center gap-x-4 flex-col md:flex-row">
-                <img class="w-64 sm:w-64" src="../assets/images/logo-img.png" alt="woman-yoga-logo">
-                <h1 class="text-5 text-center text-logo-font-color sm:text-6">Flexdev <br> <p class="text-xs sm:text-sm">{{claimer}}</p></h1>                
+            <div class="mr-6">
+                <router-link class="cursor-pointer" :to="{ name: 'Home'}"><img id="logo" src="../assets/images/logo-black.png" alt="woman-yoga-logo"></router-link>
             </div>
             
             <!-- LINKS A LAS RUTAS -->
-            <ul class="flex flex-1 gap-x-10 font-Poppins font-bold pb-6 text-xl md:pb-10 md:text-2">
-                <router-link  v-if="!user" class="cursor-pointer" :to="{ name: 'Home'}">HOME</router-link>
-                <router-link  v-if="user" @click="fetchData" class="cursor-pointer" :to="{ name: 'Dashboard'}">DASHBOARD</router-link>
-                <router-link v-if="user" class="cursor-pointer" :to="{ name: 'Create'}">CREATE</router-link>
-                <router-link v-if="!user" class="cursor-pointer" :to="{ name: 'Login'}">LOGIN</router-link>
-                <li v-if="user" @click="logout" class="cursor-pointer">LOGOUT</li>
+            <ul v-if="!user" class="flex gap-x-3 font-Roboto font-bold text-almost-white 
+                 text-xl"
+            >
+                <button class="text-black rounded-md border-2 border-green-strong px-3 shadow-md"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Login'}">Login</router-link></button>
+                <button class="bg-green-low text-almost-white rounded-md px-3 shadow-md"><router-link class="cursor-pointer text-sm font-semibold font-Silkscreen" :to="{ name: 'Register'}">Sign Up</router-link></button>
+            </ul>
+            <ul v-else class="flex gap-x-3 lg:gap-x-8 font-Roboto font-bold text-green-strong 
+                 text-lg md:text-xl"
+            >
+                <router-link  @click="fetchData" class="cursor-pointer border-b-4 border-green-strong" :to="{ name: 'Dashboard'}">Dashboard</router-link>
+                <router-link class="cursor-pointer border-b-4 border-green-strong" :to="{ name: 'Create'}">Create</router-link>
+                <button @click="logout" class="text-green-strong rounded-md border-2 border-green-strong px-3 shadow-md">Logout</button>
+
             </ul>
         </nav>
     </header>
@@ -47,6 +53,7 @@ const taskStore = useTaskStore();
 // OBTENEMOS EL USUARIO DESDE EL STORE
 const user = computed (() => userStore.user);
 
+
 // LLAMAMOS LA FUNCIÓN LOGOUT DEL STORE USER.JS
 const logout = async function () {
     await userStore.logOut();
@@ -60,5 +67,10 @@ const fetchData = function () {
 </script>
 
 <style>
-
+#logo{
+    width: 150px;
+}
+#logo-mobile{
+    width: 60px;
+}
 </style>

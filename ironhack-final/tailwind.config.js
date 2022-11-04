@@ -8,21 +8,24 @@ module.exports = {
     extend: {
       colors: {
         "header-purple": "#b79ced",
-        "background-pink": "#efd9ce",
+        "background-pink": "#957FEF",
         "logo-font-color": "#1A423F",
         "light-grey": "#f1f1f1",
-        "light-green": "#6D856B",
-        "skin-pink": "#F38080",
-        "red": "#e5383b",
-        "success": "#80ed99",
+        "light-green": "#6D856B",        
+        "almost-white": "#fff6ee",
+        "yellow": "#FFCD07",
+        "orange": "#FFA00A",
+        "green-low":"#6D856B",
+        "green-strong": "#1A423F"
       },
       backgroundImage: {
         'skipping': "url('./src/assets/images/skipping.png')",
       }
     },
     fontFamily: {
-      Poppins: ["Poppins, sans-serif"],
-      Silkscreen: ["Silkscreen"]
+      Silkscreen: ["Silkscreen"],
+      Roboto: ["Roboto"],
+      Lora: ["Lora"]
     },
     fontWeight: {
       hairline: 100,
@@ -44,7 +47,7 @@ module.exports = {
       3: '1.953rem',
       4: '2.441rem',
       5: '3.052rem',
-      6: '6rem',
+      6: '5.3rem',
       7:'8rem'
     },
     flex: {
