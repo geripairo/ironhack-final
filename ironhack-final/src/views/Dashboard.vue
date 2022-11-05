@@ -1,6 +1,6 @@
 <template>
     
-        <div class="container mt-10 px-4 my-24 h-screen bg-almost-white pb-64">
+        <div id="dashboard-wrapper" class="container mt-10 px-4 my-24 h-screen bg-almost-white pb-64">
     
           <div v-if="data.length === 0" class="w-full flex flex-col items-center pt-24">
               <h1 class="text-2xl text-black">This is empty...</h1>
@@ -76,5 +76,5 @@
   </script>
   
   <style>
-  
+
   </style>

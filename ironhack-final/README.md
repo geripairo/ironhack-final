@@ -1,4 +1,9 @@
-# ironhack-final
+# Flexdev
+
+Flexdev es una web app creada como SPA que te permite crear un usuario y generar tareas de entrenamiento. Estas tareas se pueden editar, modificar y eliminar. Sólo podrás ver las tareas vinculadas a tu usuario. Ponte en forma!
+
+
+## Licencia
 
 Begin license text.
 Copyright <2022> <GERARD PAIRÓ PAREJO>
@@ -13,7 +18,13 @@ End license text.
 
 ## Recommended IDE Setup
 
+Puedes instalarlo desde el repositorio =>
+
+'$ git clone https://github.com/geripairo/ironhack-final.git'
+
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+
 
 ## Customize configuration
 
@@ -42,4 +53,3 @@ npm run build
 ```sh
 npm run lint
 ```
-TESTING THE DEPLOY
