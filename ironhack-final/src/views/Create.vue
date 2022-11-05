@@ -1,6 +1,6 @@
 <template>
 
-    <div class="h-full">
+    <div class="h-full min-h-full">
 
         <div class="max-w-screen-md mx-auto px-4 py-24 pb-96 h-full">
 
@@ -126,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="flex flex-col md:w-1/3">
-                                <label for="distance" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Distance</label>
+                                <label for="distance" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Distance (km)</label>
                                 <input 
                                 type="text" 
                                 required 
@@ -135,7 +135,7 @@
                                 />
                             </div>
                             <div class="flex flex-col md:w-1/3">
-                                <label for="duration" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Duration</label>
+                                <label for="duration" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Duration (min)</label>
                                 <input 
                                 type="text" 
                                 required 
@@ -144,7 +144,7 @@
                                 />
                             </div>
                             <div class="flex flex-col md:w-1/3">
-                                <label for="pace" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Pace</label>
+                                <label for="pace" class="mb-1 text-green-strong lg:text-almost-white text-sm font-Silkscreen">Intensity</label>
                                 <input 
                                 type="text" 
                                 required 

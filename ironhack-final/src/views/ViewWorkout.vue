@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-sm mx-auto px-3 py-10">
+  <div class="max-w-screen-sm mx-auto px-3 py-10 pb-40">
     <div class="">
       <!-- Info general del workout -->
       <div class="flex flex-col items-center p-8 rounded-md bg-green-low relative">
@@ -19,12 +19,12 @@
         </div>
         <img 
         v-if="viewData.workoutType === 'cardio'" 
-        class="h-40 w-auto" src="../assets/images/cardio.png" 
+        class="h-40 w-auto" src="../assets/images/running.png" 
         alt="workout-img"
         >
         <img 
         v-else 
-        class="h-40 w-auto" src="../assets/images/strenght.png" 
+        class="h-40 w-auto" src="../assets/images/fuerza.png" 
         alt="workout-img"
         >
 
@@ -143,7 +143,7 @@
               <p v-else>{{item.cardioType}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="distance" class="mb-1 text-sm text-almost-white font-Silkscreen">Distance</label>
+              <label for="distance" class="mb-1 text-sm text-almost-white font-Silkscreen">Distance (km)</label>
               <input 
                 id="distance"
                 v-if="edit" 
@@ -154,7 +154,7 @@
               <p v-else>{{item.distance}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="duration" class="mb-1 text-sm text-almost-white font-Silkscreen">Duration</label>
+              <label for="duration" class="mb-1 text-sm text-almost-white font-Silkscreen">Duration (min)</label>
               <input 
                 id="duration"
                 v-if="edit" 
@@ -165,7 +165,7 @@
               <p v-else>{{item.duration}}</p>
             </div>
             <div class="flex flex-2 flex-col md:w-1/3">
-              <label for="pace" class="mb-1 text-sm text-almost-white font-Silkscreen">Pace</label>
+              <label for="pace" class="mb-1 text-sm text-almost-white font-Silkscreen">Intensity</label>
               <input 
               id="pace"
               v-if="edit" 

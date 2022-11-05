@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-screen bg-almost-white pt-12 lg:pt-2">
+  <div class="w-full h-screen bg-almost-white pt-12 lg:pt-2 pb-48 lg:pt-24">
     <div class="flex flex-col items-center xl:flex-row text-center 
-    mx-10 mt-8 bg-almost-white h-screen lg:mt-3 lg:justify-center
+    mx-10 mt-8 bg-almost-white h-full lg:mt-3 lg:justify-center
     lg:ml-10"
 
     >

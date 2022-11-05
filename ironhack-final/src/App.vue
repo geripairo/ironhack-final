@@ -1,7 +1,7 @@
 <template>
-  <div class="font-Roboto box-border h-full bg-almost-white">
+  <div class="font-Roboto box-border h-full bg-almost-white min-h-screen">
     <Navbar class="w-screen"/>   
-    <RouterView class="h-screen"/>
+    <RouterView />
   </div>
 </template>
 
@@ -31,13 +31,7 @@ const userStore = useUserStore()
 
 // ESTABLECEMOS EL VALOR DE USUARIO AL CAMBIAR DE ESTADO
 supabase.auth.onAuthStateChange((_, session) => {
-  console.log(session)
     userStore.setUser(session);
-    if(session) {
-      router.push({ name: 'Dashboard' });
-    } else {
-      router.push({ name: 'Home' });
-    }
 })
 
 

@@ -1,13 +1,13 @@
 <template>
     <div class="h-screen w-full bg-almost-white">
 
-        <div class="pt-12 md:pt-24 
+        <div class="lg:pt-12
         bg-almost-white">
 
                 <!-- IMG -->
-            <div id="img-wrapper" class="object-contain bg-almost-white mx-auto relative">
+            <div id="img-wrapper" class="object-contain bg-almost-white mx-auto relative lg:pr-30">
                 <!-- FORMULARIO DE LOGIN -->
-                <div id="form-wrapper" class="max-w-screen-sm px-4 mt-8 
+                <div id="form" class="max-w-screen-sm px-4 mt-8 
                     lg:absolute mx-auto w-full">
                     <form @submit.prevent="register" class="p-8 flex flex-col  
              lg:bg-green-low lg:rounded-md lg:shadow-lg">
@@ -91,12 +91,12 @@
 
                 <!-- MENSAJE DE VERIFICACIÓN EMAIL -->
                 <div id="success-message" v-if="verifyEmail" class="bg-success py-1 px-1 rounded-md text-center mb-3">
-                    <p class="text-logo-font-color font-semibold">{{verifyEmail}}</p>
+                    <p class="text-green-strong lg:text-green-low font-semibold">{{verifyEmail}}</p>
                 </div>
 
                 <!-- MENSAJE DE REDIRECT AL LOGIN -->
                 <div id="redirect-message" v-if="redirect">
-                    <p class="text-black text-center text-background-pink font-semibold">{{redirect}}</p>
+                    <p class="text-green-strong text-center text-background-pink font-semibold lg:text-almost-white">{{redirect}}</p>
                 </div>
 
                 <button 
@@ -124,7 +124,7 @@
                 id="login-img" 
                 src="../assets/images/register/pino-puente.png" 
                 alt="man-running-with-laptop"
-                class="hidden lg:block lg:ml-12"
+                class="hidden lg:block lg:ml-2"
                 >
             </div>
         </div>
@@ -197,7 +197,7 @@ const register = async function () {
     width: 70%;
  }
 
- #form-wrapper{
+ #form{
     top:2%;
     left: 50%;
     width: 50%;

@@ -1,6 +1,6 @@
 <template>
     
-        <div class="container mt-10 px-4 my-24 h-screen bg-almost-white">
+        <div class="container mt-10 px-4 my-24 h-screen bg-almost-white pb-64">
     
           <div v-if="data.length === 0" class="w-full flex flex-col items-center pt-24">
               <h1 class="text-2xl text-black">This is empty...</h1>
@@ -18,14 +18,14 @@
               >
                 <img 
                   v-if="workout.workoutType === 'cardio'" 
-                  src="../assets/images/cardio.png" 
+                  src="../assets/images/running.png" 
                   alt="test-img1"
                   class="h-24 w-auto mx-auto"
                 />
 
                 <img 
                   v-else 
-                  src="../assets/images/strenght.png"
+                  src="../assets/images/fuerza.png"
                   alt="test-img2"
                   class="h-24 w-auto mx-auto"
                 />

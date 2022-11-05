@@ -1,17 +1,17 @@
 <template>
     <div class="h-screen w-full bg-almost-white">
 
-        <div class="pt-12 md:pt-24 
+        <div class="md:pt-6 
         bg-almost-white">
 
                 <!-- IMG -->
             <div id="img-wrapper" class="object-contain bg-almost-white mx-auto relative">
                 <!-- FORMULARIO DE LOGIN -->
-                <div id="form" class="max-w-screen-sm px-4 mt-8 
+                <div id="form-wrapper" class="max-w-screen-sm px-4 mt-8 
                     lg:absolute mx-auto w-full">
                     <form 
                         @submit.prevent="login" 
-                        class="p-8 flex flex-col lg:bg-green-low lg:rounded-md lg:shadow-xl"
+                        class="p-8 flex flex-col lg:bg-green-low lg:rounded-md lg:shadow-2xl"
                     >
                         <h1 class="text-4 text-green-strong mb-8 font-Roboto lg:text-almost-white font-Silkscreen">Login</h1>
                 
@@ -54,15 +54,16 @@
                         <!-- LINK HACIA REGISTER -->
                         <router-link class="text-sm mt-8 text-center text-green-low font-bold self-start mx-auto lg:text-green-strong" :to="{name: 'Register'}">
                             Don't have an account? <span class="text-green-strong font-semibold underline lg:text-almost-white duration-200 hover:text-pink">Register</span>
-                        </router-link>          
+                        </router-link>
+                                  
                         
                     </form>
                 </div>
                 <img
                 id="login-img" 
-                src="../assets/images/login/man-laptop.png" 
+                src="../assets/images/login/handstand.png" 
                 alt="man-running-with-laptop"
-                class="hidden lg:block ml-52"
+                class="hidden lg:block"
                 >
             </div>
         </div>
@@ -111,11 +112,11 @@ import { storeToRefs } from 'pinia'
 </script>
   
 <style>
- #login-img{
-    width: 60%;
+ #img-wrapper{
+    width: 80%;
  }
 
- #form{
+ #form-wrapper{
     top:15%;
     left: 50%;
     width: 40%;
